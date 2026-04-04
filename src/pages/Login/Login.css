@@ -15,7 +15,8 @@ z-index:1000;
 background:white;
 padding:30px;
 border-radius:12px;
-width:350px;
+width:370px;
+height: 310px;
 position:relative;
 animation:popup 0.3s ease;
 }
@@ -70,4 +71,31 @@ background:#00c853;
 color:white;
 font-size:16px;
 cursor:pointer;
+padding-bottom: 10px;
+}
+
+.register-link{
+  margin-top: 20px;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+/* Button as link */
+.register-link button{
+  background: none;
+  border: none;
+  color: #007bff;   /* blue */
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 5px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+/* Hover effect */
+.register-link button:hover{
+  text-decoration: underline;
+  color: #0056b3;
 }

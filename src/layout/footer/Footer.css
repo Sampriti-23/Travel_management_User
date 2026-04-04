@@ -1,0 +1,41 @@
+.footer{
+  background:#8e908d;
+  color:white;
+  display:flex;
+  padding:50px;
+  flex-wrap:wrap;
+  gap:210px;
+}
+
+/* LEFT */
+.footer-left{
+  max-width:250px;
+  margin: 0;
+}
+
+.font{
+  margin-bottom:8px;
+  margin-top: 8px;
+  font-size:15px;
+}
+
+.social-icons{
+  margin-top:15px;
+  display:flex;
+  gap:10px;
+  font-size:20px;
+}
+
+/* SECTIONS */
+.footer-section{
+  max-width:200px;
+}
+
+.footer-section h4{
+  margin-bottom:15px;
+}
+
+.footer-section p{
+  margin-bottom:8px;
+  font-size:12px;
+}

@@ -2,23 +2,40 @@ import React, { useState } from "react";
 import "./Auth.css";
 import RegisterModal from "../Registration/Registration";
 import Login from "../Login/Login";
+import Footer from "../../layout/footer/Footer";
 
 const Auth = () => {
 
   const [activeModal, setActiveModal] = useState(null);
-
+  const token = sessionStorage.getItem("token");
   return (
     <div className="auth">
 
       {/* Navbar */}
       <nav className="navbar">
-        <div className="logo">Hodophile</div>
+        <div className="logo">
+          <h2>Hodophile</h2>
+          </div>
+
+
+        <div className="pages">
+           <ul className="nav-links">
+        <li>About Us</li>
+        <li>Packages</li>
+        <li>Hotels</li>
+        <li>Car</li>
+      </ul>
+        </div>
     {
       token?(
         <>
-        <h1>user</h1>
+        <div className="user-section">
+            <span className="user-icon">👤</span>
+            {/* <button onClick={() => dispatch(logout())}>Logout</button> */}
+          </div>
         </>
-      ):(
+      ):
+      (
         <>
          <div className="nav-buttons">
           <button className="login-btn"
@@ -40,18 +57,20 @@ const Auth = () => {
       </nav>
 
       {/* Hero Section */}
+      <div className="hero-container">
       <section className="hero">
         <div className="hero-overlay">
-          <h1>Your Personalized Portal to The World</h1>
+          <h1>Discover The Beauty Of INDIA</h1>
 
-          <p>
+          <p><t>
             Discover amazing places, plan your trips and create unforgettable
             travel experiences.
-          </p>
+          </t></p>
 
           <button className="trip-btn">Plan Your Trip</button>
         </div>
       </section>
+      </div>
 
       {/* Search Section */}
       <section className="search-section">
@@ -73,7 +92,7 @@ const Auth = () => {
       {activeModal === 'login' && (
         <Login closeModal={() => setActiveModal(null)} />
       )}
-
+      <Footer />
     </div>
   );
 };

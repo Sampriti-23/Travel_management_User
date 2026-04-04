@@ -82,7 +82,7 @@ const RegisterModal = ({ closeModal }) => {
           <button type="submit">Create Account</button>
 
         </form>
-
+           <p className="login-link"> Don't have an account? <button onClick={closeModal}><u>Login</u></button></p>
       </div>
     </div>
   );

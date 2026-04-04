@@ -82,10 +82,12 @@ const authSlice = createSlice({
         state.loading = false;
         state.error = action.payload;
       })
-      .addCase(loginUser.fulfilled, (state, action) => {
+      .addCase(loginUser.fulfilled, (state, {payload}) => {
         state.loading = false;
-        state.user = action.payload;
-        sessionStorage.setItem("user", JSON.stringify(action.payload));
+        state.user =payload;
+        console.log("Login Payload:", payload);
+       // sessionStorage.setItem("user", JSON.stringify(action.payload));
+       sessionStorage.setItem("token", payload.token);
 
       });
   },

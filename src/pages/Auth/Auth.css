@@ -21,12 +21,63 @@ justify-content:space-between;
 align-items:center;
 padding:20px 60px;
 z-index:10;
+height:50px;
+background-color: rgb(240, 249, 237);
 }
 
 .logo{
-font-size:26px;
+font-size:15px;
+font-style:italic;
 font-weight:bold;
-color:white;
+color:rgb(50, 78, 27);
+}
+
+.pages{
+   
+    padding-left: 250px;
+}
+
+/* NAV LINKS CONTAINER */
+.nav-links{
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  font-weight: 200px;
+}
+
+/* EACH LINK */
+.nav-links li{
+  position: relative;
+  font-size: 15px;
+  font-weight: 700px;
+  color: rgb(43, 71, 24);
+  cursor: pointer;
+  transition: 0.3s ease;
+  
+}
+
+/* HOVER EFFECT */
+.nav-links li:hover{
+  color: black;
+}
+
+/* UNDERLINE ANIMATION */
+.nav-links li::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: rgb(43, 71, 24);
+  transition: 0.3s;
+}
+
+.nav-links li:hover::after{
+  width: 100%;
 }
 
 .nav-buttons button{
@@ -48,29 +99,36 @@ background:#00c853;
 color:white;
 }
 
+.nav-right h2{
+  font-weight:bold;
+}
 
 /* HERO SECTION */
 
+.hero-container{
+position:relative;
+background-image: url(../../assets/pic.jpeg);
+height: 730px;
+padding-top: 60px;
+}
+
 .hero{
 height:90vh;
-background-image:url("https://images.unsplash.com/photo-1501785888041-af3ef285b470");
 background-size:cover;
 background-position:center;
 display:flex;
 align-items:center;
 justify-content:center;
 text-align:center;
-color:white;
+color:rgb(16, 39, 5);
 }
 
 .hero-overlay{
-background:rgba(0,0,0,0.45);
-padding:40px;
-border-radius:10px;
+padding-top:10px;
 }
 
 .hero-overlay h1{
-font-size:55px;
+font-size:45px;
 margin-bottom:20px;
 }
 
@@ -78,6 +136,7 @@ margin-bottom:20px;
 font-size:18px;
 margin-bottom:30px;
 max-width:600px;
+margin-left: 15px;
 }
 
 .trip-btn{
@@ -85,7 +144,7 @@ padding:14px 30px;
 font-size:18px;
 border:none;
 border-radius:30px;
-background:#00c853;
+background:#00b34b;
 color:white;
 cursor:pointer;
 transition:0.3s;
@@ -136,4 +195,13 @@ background:#00c853;
 color:white;
 font-size:16px;
 cursor:pointer;
+}
+.user-section{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.user-icon{
+  font-size:22px;
 }
