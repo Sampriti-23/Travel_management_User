@@ -205,3 +205,46 @@ cursor:pointer;
 .user-icon{
   font-size:22px;
 }
+/* Avatar */
+.avatar {
+  width: 40px;
+  height: 40px;
+  background: #2d57c9;
+  color: white;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Dropdown */
+.user-section {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 160px;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+}
+
+.dropdown p {
+  padding: 10px;
+  cursor: pointer;
+  margin: 0;
+}
+
+.dropdown p:hover {
+  background: #f5f5f5;
+}
+
+.logout {
+  color: red;
+}

@@ -1,55 +1,45 @@
 import React from "react";
 import "./Registration.css";
-import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
-import { registerUser } from "../../Reducer/AuthSlice";
 
-const RegisterModal = ({ closeModal }) => {
-
-  const dispatch = useDispatch();
-
+const RegisterModal = ({ closeModal, openLogin }) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    dispatch(registerUser(data)).then((res) => {
-      if (res?.payload?.status_code === 201) {
-        if (closeModal) closeModal();
-      }
-    });
+    console.log("REGISTER DATA:", data);
+
+    // 👉 Call your API here
+
+    // After successful registration:
+    closeModal();
+    openLogin(); // redirect to login
   };
 
   return (
     <div className="modal-overlay">
-      <div className="modal">
-
-        <span className="close-btn" onClick={closeModal}>×</span>
+      <div className="modal-register">
+        
+        {/* Close Button */}
+        <span className="close-btn" onClick={closeModal}>
+          ×
+        </span>
 
         <h2>Register</h2>
 
+        {/* Form */}
         <form className="modal-form" onSubmit={handleSubmit(onSubmit)}>
 
-          {/* Username */}
           <input
             type="text"
-            placeholder="Name"
+            placeholder="Full Name"
             {...register("name", { required: "Name is required" })}
           />
           {errors.name && <p className="error">{errors.name.message}</p>}
 
-          {/* Phone */}
-          <input
-            type="tel"
-            placeholder="Phone"
-            {...register("phone", { required: "Phone is required" })}
-          />
-          {errors.phone && <p className="error">{errors.phone.message}</p>}
-
-          {/* Email */}
           <input
             type="email"
             placeholder="Email"
@@ -57,32 +47,36 @@ const RegisterModal = ({ closeModal }) => {
           />
           {errors.email && <p className="error">{errors.email.message}</p>}
 
-          {/* Password */}
           <input
             type="password"
             placeholder="Password"
             {...register("password", { required: "Password is required" })}
           />
-          {errors.password && <p className="error">{errors.password.message}</p>}
-
-          {/* Confirm Password */}
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            {...register("confirmPassword", {
-              required: "Confirm Password is required",
-              validate: (value) =>
-                value === watch("password") || "Passwords do not match",
-            })}
-          />
-          {errors.confirmPassword && (
-            <p className="error">{errors.confirmPassword.message}</p>
+          {errors.password && (
+            <p className="error">{errors.password.message}</p>
           )}
 
-          <button type="submit">Create Account</button>
+          {/* Confirm Password */} 
+          <input type="password" placeholder="Confirm Password" 
+          {...register("confirmPassword", { required: "Confirm Password is required", validate: (value) => value === watch("password") || "Passwords do not match", })} 
+          /> {errors.confirmPassword && ( <p className="error">
+          {errors.confirmPassword.message}</p> )}
 
+          <button type="submit">Register</button>
         </form>
-           <p className="login-link"> Don't have an account? <button onClick={closeModal}><u>Login</u></button></p>
+
+        {/* Login Redirect */}
+        <p className="login-link">
+          Already have an account?
+          <button
+            onClick={() => {
+              closeModal();   // close register
+              openLogin();    // open login
+            }}
+          >
+            <u>Login</u>
+          </button>
+        </p>
       </div>
     </div>
   );

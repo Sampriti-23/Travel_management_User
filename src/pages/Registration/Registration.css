@@ -13,18 +13,21 @@
 }
 
 /* MODAL BOX */
-.modal{
+.modal-register{
   background: white;
   padding: 25px 20px;
   border-radius: 16px;
   width: 400px;
   max-width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  position: relative;
-  animation: popup 0.3s ease;
+  min-height: 500px;
+
   display: flex;
   flex-direction: column;
+  justify-content: center;   /* 🔥 THIS CENTERS EVERYTHING */
+  align-items: stretch;
+
+  position: relative;
+  animation: popup 0.3s ease;
   box-shadow: 0 15px 40px rgba(0,0,0,0.3);
 }
 
@@ -50,21 +53,22 @@
 }
 
 /* TITLE */
-.modal h2{
+.modal-register h2{
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
+  margin-top: -20px;
   font-weight: 600;
 }
 
 /* FORM */
-.modal-form{
+.modal-register .modal-form{
   display: flex;
   flex-direction: column;
   gap: 12px;
 }
 
 /* INPUTS */
-.modal-form input{
+.modal-register .modal-form input{
   padding: 12px 14px;
   border-radius: 10px;
   border: 1px solid #ddd;
@@ -74,7 +78,7 @@
 }
 
 /* INPUT FOCUS */
-.modal-form input:focus{
+.modal-register .modal-form input:focus{
   border-color: #00c853;
 }
 
@@ -86,7 +90,7 @@
 }
 
 /* BUTTON */
-.modal-form button{
+.modal-register .modal-form button{
   width: 100%;
   padding: 14px;
   border: none;
@@ -99,13 +103,13 @@
   transition: 0.3s;
 }
 
-.modal-form button:hover{
+.modal-register .modal-form button:hover{
   background: #009624;
 }
 
 /* LOGIN LINK */
 .login-link{
-  margin-top: 15px;
+  margin-top: 22px;
   font-size: 14px;
   color: #555;
   text-align: center;
