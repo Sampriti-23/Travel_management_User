@@ -1,32 +1,48 @@
 import React from "react";
 import "./Registration.css";
+import { useDispatch } from "react-redux";
 import { useForm } from "react-hook-form";
+import { registerUser } from "../../Reducer/AuthSlice";
 
 const RegisterModal = ({ closeModal, openLogin }) => {
+
+  const dispatch = useDispatch();
+
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors },
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log("REGISTER DATA:", data);
+    dispatch(registerUser(data)).then((res) => {
+      console.log("REGISTER RESPONSE:", res);
 
-    // 👉 Call your API here
+      if (res?.payload?.status_code === 201) {
 
-    // After successful registration:
-    closeModal();
-    openLogin(); // redirect to login
+        const user = res.payload.user || res.payload.data?.user;
+
+        if (user) {
+          sessionStorage.setItem("user", JSON.stringify(user));
+        }
+
+        // ✅ Switch to login modal
+        closeModal();
+        openLogin();
+
+      } else {
+        alert("Registration failed ");
+      }
+    });
   };
 
   return (
     <div className="modal-overlay">
       <div className="modal-register">
-        
+
         {/* Close Button */}
-        <span className="close-btn" onClick={closeModal}>
-          ×
-        </span>
+        <span className="close-btn" onClick={closeModal}>×</span>
 
         <h2>Register</h2>
 
@@ -56,27 +72,30 @@ const RegisterModal = ({ closeModal, openLogin }) => {
             <p className="error">{errors.password.message}</p>
           )}
 
-          {/* Confirm Password */} 
-          <input type="password" placeholder="Confirm Password" 
-          {...register("confirmPassword", { required: "Confirm Password is required", validate: (value) => value === watch("password") || "Passwords do not match", })} 
-          /> {errors.confirmPassword && ( <p className="error">
-          {errors.confirmPassword.message}</p> )}
+          <input
+            type="password"
+            placeholder="Confirm Password"
+            {...register("confirmPassword", {
+              required: "Confirm Password is required",
+              validate: (value) =>
+                value === watch("password") || "Passwords do not match",
+            })}
+          />
+          {errors.confirmPassword && (
+            <p className="error">{errors.confirmPassword.message}</p>
+          )}
+
 
           <button type="submit">Register</button>
         </form>
 
-        {/* Login Redirect */}
         <p className="login-link">
           Already have an account?
-          <button
-            onClick={() => {
-              closeModal();   // close register
-              openLogin();    // open login
-            }}
-          >
+          <button onClick={() => openLogin()}>
             <u>Login</u>
           </button>
         </p>
+
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const Footer = () => {
       <div className="footer-left">
         <h3>Hi Tourists!</h3>
         <p className="font">+91 8767926745</p>
-        <p className="font">Hodophile - 2026</p>
+        <p className="font">RoamSpark - 2026</p>
 
         <div className="social-icons">
           <span>🌐</span>

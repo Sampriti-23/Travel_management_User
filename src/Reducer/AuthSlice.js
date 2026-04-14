@@ -12,8 +12,9 @@ export const registerUser = createAsyncThunk(
         return response.data;
       }
     } catch (error) {
-      return rejectWithValue(error.response?.data || "Registration failed");
-    }
+  console.log("REGISTER ERROR:", error.response?.data);  // 🔥 ADD THIS
+  return rejectWithValue(error.response?.data || "Registration failed");
+}
   }
 );
 
