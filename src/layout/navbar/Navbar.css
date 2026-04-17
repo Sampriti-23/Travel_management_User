@@ -1,0 +1,119 @@
+/* NAVBAR */
+
+.navbar{
+position:absolute;
+top:0;
+left:0;
+width:100%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:20px 60px;
+z-index:10;
+height:58px;
+background-color: rgb(254, 254, 254);
+}
+
+.logo{
+  display: flex;
+  align-items: center;   /* vertical alignment */
+  gap: 10px;             /* space between logo & text */
+  cursor: pointer;
+}
+
+/* Logo image */
+.logo img{
+  height: 40px;          /* adjust as needed */
+  width: auto;
+  object-fit: contain;
+}
+/* Text */
+.logo span{
+  font-size: 20px;
+  color: #017d35;
+  letter-spacing: 1px;
+  font-family: 'Playfair Display', serif;
+  font-style: bold;
+  font-size: 26px;
+  font-weight: 900;
+}
+
+.pages{
+   
+    padding-left: 250px;
+}
+
+/* NAV LINKS CONTAINER */
+.nav-links{
+  list-style:inside none;
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  margin-left: 200px;
+  padding: 0;
+  
+
+}
+
+/* EACH LINK */
+.nav-links li{
+  position: relative;
+  font-size: 15px;
+  color: rgb(28, 46, 15);
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.nav-links a{
+  text-decoration: none;   /* ❌ remove underline */
+  color: inherit;          /* use parent color */
+}
+
+/* Optional: hover effect */
+.nav-links a:hover{
+  color: #03873a;          /* nice travel orange */
+}
+
+/* HOVER EFFECT */
+.nav-links li:hover{
+  color: black;
+}
+
+/* UNDERLINE ANIMATION */
+.nav-links li::after{
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: rgb(43, 71, 24);
+  transition: 0.3s;
+}
+
+.nav-links li:hover::after{
+  width: 100%;
+}
+
+.nav-buttons button{
+margin-left:15px;
+padding:10px 20px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+font-size:15px;
+}
+
+.login-btn{
+background:white;
+color:black;
+}
+
+.register-btn{
+background:#00c853;
+color:white;
+}
+
+.nav-right h2{
+  font-weight:bold;
+}

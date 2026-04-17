@@ -4,31 +4,12 @@ import RegisterModal from "../Registration/Registration";
 import Login from "../Login/Login";
 import Footer from "../../layout/footer/Footer";
 import logo from "../../assets/logo.jpeg";
+import { Link } from "react-router-dom";
+import Navbar from "../../layout/navbar/Navbar";
+
 
 const Auth = () => {
   const [activeModal, setActiveModal] = useState(null);
-  const [showDropdown, setShowDropdown] = useState(false);
-
-  const token = sessionStorage.getItem("token");
-  const user = JSON.parse(sessionStorage.getItem("user"));
-
-  const dropdownRef = useRef();
-
-  // close dropdown when clicking outside
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(e.target)) {
-        setShowDropdown(false);
-      }
-    };
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const handleLogout = () => {
-    sessionStorage.clear();
-    window.location.reload();
-  };
 
   const [index, setIndex] = useState(0);
 
@@ -48,60 +29,10 @@ const Auth = () => {
   return (
     <div className="auth">
       {/* Navbar */}
-      <nav className="navbar">
-        <div className="logo">
-           <img src={logo} alt="Roamspark Logo" /> <span>RoamSpark</span>
-        </div>
-
-        <div className="pages">
-          <ul className="nav-links">
-            <li><b>About Us</b></li>
-            <li><b>Packages</b></li>
-            <li><b>Hotels</b></li>
-            <li><b>Car</b></li>
-          </ul>
-        </div>
-
-        {token ? (
-          <div className="user-section" ref={dropdownRef}>
-            
-            {/* Avatar */}
-            <div
-              className="avatar"
-              onClick={() => setShowDropdown(!showDropdown)}
-            >
-              {user?.name?.charAt(0).toUpperCase()}
-            </div>
-
-            {/* Dropdown */}
-            {showDropdown && (
-              <div className="dropdown">
-                <p onClick={() => alert("Go to Profile")}>My Profile</p>
-                <p onClick={() => alert("Go to Bookings")}>My Bookings</p>
-                <p onClick={handleLogout} className="logout">
-                  Logout
-                </p>
-              </div>
-            )}
-          </div>
-        ) : (
-          <div className="nav-buttons">
-            <button
-              className="login-btn"
-              onClick={() => setActiveModal("login")}
-            >
-              Login
-            </button>
-
-            <button
-              className="register-btn"
-              onClick={() => setActiveModal("register")}
-            >
-              Register
-            </button>
-          </div>
-        )}
-      </nav>
+       <Navbar
+        openLogin={() => setActiveModal("login")}
+        openRegister={() => setActiveModal("register")}
+      />
 
       {/* Hero Section - https://images.unsplash.com/photo-1617380613434-7495e9b45dfb  */}
       <div className="hero-container">
@@ -123,12 +54,14 @@ const Auth = () => {
       <section className="search-section">
         <h2>Where to?</h2>
 
-        <div className="search-box">
-          <input
-            type="text"
-            placeholder="Places to go, hotels, restaurants..."
-          />
-          <button>Search</button>
+        <div className="search-container">
+          <span className="search-icon">🔍</span>
+            <input
+             type="text"
+             placeholder="Places to go, hotels, restaurants..."
+             />
+
+         <button className="check-btn">Search</button>
         </div>
       </section>
 
